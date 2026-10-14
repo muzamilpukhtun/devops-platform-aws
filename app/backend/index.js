@@ -8,6 +8,10 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
+pool.on('error', (err) => {
+  console.error('idle db client error', err.message);
+});
+
 app.get('/health', async (req, res) => {
   try {
     await pool.query('SELECT 1');
