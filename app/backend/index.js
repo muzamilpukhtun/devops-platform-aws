@@ -8,8 +8,14 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 const pool = new Pool({ connectionString: process.env.DATABASE_URL });
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok' });
+app.get('/health', async (req, res) => {
+  try {
+    await pool.query('SELECT 1');
+    res.json({ status: 'ok' });
+  } catch (err) {
+    console.error('health check failed', err.message);
+    res.status(503).json({ status: 'unhealthy' });
+  }
 });
 
 app.get('/notes', async (req, res) => {
