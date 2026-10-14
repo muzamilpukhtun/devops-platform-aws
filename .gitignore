@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Keys and certs
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+
+# Kubernetes
+kubeconfig
+*.kubeconfig
+
+# Build output
+dist/
+build/
+coverage/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
