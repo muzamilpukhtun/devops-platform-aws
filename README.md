@@ -16,7 +16,7 @@ A small 3-tier notes app (React, Node.js, PostgreSQL) used as a vehicle to learn
 - Docker Compose: `db` + `backend`, `depends_on: service_healthy`, DB port not exposed to the host
 - Secrets in `.env` (gitignored), `.env.example` committed
 - Lint: Dockerfile checked with hadolint
-
+- Frontend: multi-stage build, served by nginx-unprivileged (non-root)
 ## Run it locally
 
 Requirements: Docker with the Compose plugin.
@@ -45,7 +45,7 @@ Stop (keeps data): `docker compose down`. Stop and delete data: `docker compose 
 ## Roadmap
 
 - [x] Phase 0: repo foundation, local app, compose
-- [~] Phase 1: Dockerfiles (backend done, frontend with nginx next)
+- [x] Phase 1: Dockerfiles (backend done, frontend with nginx next)
 - [ ] Phase 2: CI with GitHub Actions (lint, test, build, Trivy, gitleaks)
 - [ ] Phase 3: Terraform on AWS
 - [ ] Phase 4: Ansible and kubeadm cluster
