@@ -1,0 +1,3 @@
+- name: Install
+  working-directory: app/backend
+  run: npm ci
