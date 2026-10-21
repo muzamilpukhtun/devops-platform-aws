@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  backend-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install
+        working-directory: app/backend
+        run: npm ci
+      - name: Syntax check
+        working-directory: app/backend
+        run: node --check index.js
