@@ -83,4 +83,3 @@ start().catch((err) => {
   console.error('startup failed', err);
   process.exit(1);
 });
-const x = ;
