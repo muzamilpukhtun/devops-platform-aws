@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build image
         run: docker build -t backend:ci ./app/backend
-      - uses: aquasecurity/trivy-action@0.28.0
+      - uses: aquasecurity/trivy-action@v0.35.0
         with:
           image-ref: backend:ci
           severity: CRITICAL
@@ -79,7 +79,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build image
         run: docker build -t frontend:ci ./app/frontend
-      - uses: aquasecurity/trivy-action@0.28.0
+      - uses: aquasecurity/trivy-action@v0.35.0
         with:
           image-ref: frontend:ci
           severity: CRITICAL
