@@ -60,3 +60,27 @@ jobs:
       - uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  scan-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t backend:ci ./app/backend
+      - uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: backend:ci
+          severity: CRITICAL
+          exit-code: '1'
+
+  scan-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build -t frontend:ci ./app/frontend
+      - uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: frontend:ci
+          severity: CRITICAL
+          exit-code: '1'
